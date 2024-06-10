@@ -10,6 +10,8 @@
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+<body>
+  <h1>habibatul aulia</h1>
   <h1>Daftar Absensi Siswa</h1>
 
   <table class="table" id="daftar-produk">
@@ -28,13 +30,44 @@
     <tbody>
     </tbody>
   </table>
-  
-  <img src="loader.gif" style="width: 8em; display: block" id="loader">
+  <div class="d-flex justify-content-center">
+    <img src="loader.gif" style="width: 15em; display: block" id="loader">
+  </div>
 
-  <a href="form-absensi.html">Tambah absensi</a>
+  <div class="d-flex justify-content-center">
+  </div>
+
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .stack-up {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  </style>
 
   <script type="module">
-    import { ambilDaftarAbsensi,hapusAbsensi, formatAngka } from './main.js';
+    import { ambilDaftarAbsensi, formatAngka, hapusAbsensi } from './main.js';
 
     $(document).ready(async function() {
       let elemenDaftar = $("#daftar-absensi > tbody");
@@ -46,8 +79,11 @@
           '<tr>' +
           '<th>' + tanggal + '</th>' +
           '<td>' + data.nis+ '</td>' +
-          '<td>' + formatAngka(data.nama) + '</td>' +
+          '<td>' + data.nama+ '</td>' +
           '<td>' + data.alamat + '</td>' +
+          '<td>' + data.notlpn + '</td>' +
+          '<td>' + data.kelas + '</td>' +
+          '<td>' + data.keterangan+ '</td>' +
           '<td class="stack-up">' +
           ' <a href="#" class="me-2 link-ubah"  data="' +
           data.id +
@@ -64,16 +100,22 @@
       $('.tombol-hapus').click(async function() {
         $(this).attr('disabled', 'disabled');
         $('#' + $(this).attr('data')).show();
-        await hapusProduk($(this).attr('data'));
+        await hapusAbsensi($(this).attr('data'));
         location.reload();
       });
       $('.link-ubah').click(async function() {
-        window.location.replace('ubah-produk.html?docId=' + $(this).attr('data'));
+        window.location.replace('ubah-absensi.html?docId=' + $(this).attr('data'));
       })
 
     });
     </script>
-<body>
+  <footer class="py-3 bg-dark-subtle mt-auto">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Beranda</a></li>
+      <li class="nav-item"><a href="forum-absensi.html" id="link-login-penjual" class="nav-link px-2 text-body-secondary">tambah data</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">&copy; </p>
+  </footer>
 </body>
 
 </html>
