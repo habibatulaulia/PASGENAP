@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Absensi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body class="m-3">
+  <h1>Form absensi</h1>
+
+  <form class="mb-3">
+    <form class="mb-3">
+      <div class="mb-3">
+        <label class="form-label">Tanggal</label>
+        <input type="text" class="form-control" id="input-nama">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nis</label>
+        <input type="text" class="form-control" id="input-harga">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nama</label>
+        <input type="text" class="form-control" id="input-stok">
+      </div>
+       <div class="mb-3">
+        <label class="form-label">Alamat</label>
+        <input type="text" class="form-control" id="input-stok">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Notlpn</label>
+        <input type="text" class="form-control" id="input-stok">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Kelas</label>
+        <input type="text" class="form-control" id="input-stok">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Keterangan</label>
+        <input type="text" class="form-control" id="input-stok">
+      </div>
+      
+
+      <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
+    </form>
+
+    <a href="index.html">Lihat Daftar Absensi</a>
+    
+    <script type="module">
+      import { tambahAbsensi } from './main.js';
+      
+      let tombolTambah = document.getElementById('tombol-tambah');
+      let elemenNamaAbsensi = document.getElementById('input-tanggal');
+      let elemenHarga = document.getElementById('input-nis');
+      let elemenStok = document.getElementById('input-nama');
+      let elemenStok = document.getElementById('input-alamat');
+      let elemenStok = document.getElementById('input-notlpn');
+      let elemenStok = document.getElementById('input-kelas');
+      let elemenStok = document.getElementById('input-keterangan');
+      
+      
+      tombolTambah.addEventListener('click', async function (e) {
+        e.preventDefault();
+        await tambahAbsensi(elemenNamaTanggal.value, elemenNis.value, elemenNama.value, elemenAlamat.value, elemenNotlpn.value, elemenKelas.value, elemenKeterangan.value,);
+   //  window.location.href = 'index.html';
+      });
+    </script>
+</body>
+
+</html>

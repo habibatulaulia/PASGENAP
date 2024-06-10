@@ -29,7 +29,50 @@
     </tbody>
   </table>
   
+  <img src="loader.gif" style="width: 8em; display: block" id="loader">
 
+  <a href="form-absensi.html">Tambah absensi</a>
+
+  <script type="module">
+    import { ambilDaftarAbsensi,hapusAbsensi, formatAngka } from './main.js';
+
+    $(document).ready(async function() {
+      let elemenDaftar = $("#daftar-absensi > tbody");
+      let daftarAbsensi = await ambilDaftarAbsensi();
+      let nomor = 1;
+
+      daftarAbsensi.forEach((data) => {
+        elemenDaftar.append(
+          '<tr>' +
+          '<th>' + tanggal + '</th>' +
+          '<td>' + data.nis+ '</td>' +
+          '<td>' + formatAngka(data.nama) + '</td>' +
+          '<td>' + data.alamat + '</td>' +
+          '<td class="stack-up">' +
+          ' <a href="#" class="me-2 link-ubah"  data="' +
+          data.id +
+          '">ubah</a> ' +
+          ' <button class="btn btn-danger tombol-hapus" data="' +
+          data.id +
+          '">Hapus</button>' + '</td>' +
+          '</tr>'
+        );
+        nomor = nomor + 1;
+      });
+      $('#loader').hide();
+
+      $('.tombol-hapus').click(async function() {
+        $(this).attr('disabled', 'disabled');
+        $('#' + $(this).attr('data')).show();
+        await hapusProduk($(this).attr('data'));
+        location.reload();
+      });
+      $('.link-ubah').click(async function() {
+        window.location.replace('ubah-produk.html?docId=' + $(this).attr('data'));
+      })
+
+    });
+    </script>
 <body>
 </body>
 
