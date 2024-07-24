@@ -60,7 +60,7 @@ export async function tambahAbsensi(tanggal, nis, nama, alamat, noTlpn, kelas, k
       nis: nis,
       nama: nama,
       alamat: alamat,
-      noTlpn: noTlpn,
+      notlpn: notlpn,
       kelas: kelas,
       keterangan: keterangan
     });
@@ -74,11 +74,11 @@ export async function hapusAbsensi(docId) {
   await deleteDoc(doc(db, "absensi", docId));
 }
 
-export async function ubahPembeli(docId, nama, alamat, noTlpn) {
+export async function ubahPembeli(docId, nama, alamat, notlpn) {
   await updateDoc(doc(db, "pembeli", docId), {
     nama: nama,
     alamat: alamat,
-    noTlpn: noTlpn
+    notlpn: notlpn
   });
 }
 
