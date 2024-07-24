@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <h1>Habibatul aulia</h1>
+  <h1>habibatul aulia</h1>
   <h1>Daftar Absen Siswa</h1>
 
 
@@ -89,7 +89,7 @@
           '<td>' + data.tanggal + '</td>' +
           '<td>' + data.nis + '</td>' +
           '<td>' + data.nama + '</td>' +
-          '<td>' + data.alamat + '</td>' + '<td>' + data.notlpn + '</td>' + '<td>' + data.kelas + '</td>' + '<td>' + data.keterangan + '</td>' +
+          '<td>' + data.alamat + '</td>' + '<td>' + data.noTlpn + '</td>' + '<td>' + data.kelas + '</td>' + '<td>' + data.keterangan + '</td>' +
           '<td class="stack-up">' +
           ' <a href="#" class="btn btn-warning link-ubah"  data="' +
           data.id +
@@ -108,17 +108,17 @@
       })
 
       $('.link-ubah').click(async function() {
-        window.location.replace('ubah-produk.html?docId=' + $(this).attr('data'));
+        window.location.replace('ubah-absensi.html?docId=' + $(this).attr('data'));
       })
 
       $('#loader').hide();
 
     });
   </script>
-  <footer class="py-3 bg-dark-subtle mt-auto">
+   <footer  </span> 
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Beranda</a></li>
-      <li class="nav-item"><a href="from-absensi.html" id="link-login-penjual" class="nav-link px-2 text-body-secondary">tambah data</a></li>
+      <li class="nav-item"><a href="forum-absensi.html" id="link-login-penjual" class="nav-link px-2 text-body-secondary">tambah data</a></li>
     </ul>
     <p class="text-center text-body-secondary">&copy; </p>
   </footer>

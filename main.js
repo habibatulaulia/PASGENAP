@@ -40,7 +40,7 @@ export async function ambilDaftarAbsensi() {
       noTlpn: dok.data().noTlpn,
       kelas: dok.data().kelas,
       keterangan: dok.data().keterangan,
-      
+
     });
   });
 
@@ -60,7 +60,7 @@ export async function tambahAbsensi(tanggal, nis, nama, alamat, noTlpn, kelas, k
       nis: nis,
       nama: nama,
       alamat: alamat,
-      notlpn: notlpn,
+      noTlpn: noTlpn,
       kelas: kelas,
       keterangan: keterangan
     });
@@ -74,16 +74,20 @@ export async function hapusAbsensi(docId) {
   await deleteDoc(doc(db, "absensi", docId));
 }
 
-export async function ubahPembeli(docId, nama, alamat, notlpn) {
-  await updateDoc(doc(db, "pembeli", docId), {
+export async function ubahAbsensi(docId, tanggal, nis, nama, alamat, noTlpn, kelas, keterangan) {
+  await updateDoc(doc(db, "absensi", docId), {
+    tanggal: tanggal,
+    nis: nis,
     nama: nama,
     alamat: alamat,
-    notlpn: notlpn
+    noTlpn: noTlpn,
+    kelas: kelas,
+    keterangan: keterangan
   });
 }
 
-export async function ambilPembeli(docId) {
-  const docRef = await doc(db, "pembeli", docId);
+export async function ambilAbsensi(docId) {
+  const docRef = await doc(db, "absensi", docId);
   const docSnap = await getDoc(docRef);
 
   return await docSnap.data();

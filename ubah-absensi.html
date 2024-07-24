@@ -9,55 +9,123 @@
   <title>Data siswa</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link href="css/tooplate.css" rel="stylesheet">
+
 </head>
 
 <body class="m-4">
-  <h1>Ubah Data </h1>
+
 
   <form class="mb-3">
     <div class="mb-3">
-      <label class="form-label">Nama Pembeli</label>
-      <input type="text" class="form-control" id="input-nama">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">alamat</label>
-      <input type="text" class="form-control" id="input-alamat">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">no telpon</label>
-      <input type="text" class="form-control" id="input-noTlpn">
-    </div>
-    <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
+      <div class="mb-3">
+        <label class="form-label">Tangal</label>
+        <input type="date" class="form-control" id="input-tanggal">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nis</label>
+        <input type="text" class="form-control" id="input-nis">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nama</label>
+        <input type="text" class="form-control" id="input-nama">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Alamat</label>
+        <input type="text" class="form-control" id="input-alamat">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">No.tlpn</label>
+        <input type="text" class="form-control" id="input-noTlpn">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Kelas</label>
+        <input type="text" class="form-control" id="input-kelas">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Keterangan</label>
+        <input type="text" class="form-control" id="input-keterangan">
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
+      </div>
   </form>
 
-<div class="d-flex justify-content-center">
-  <button onclick="location.href='index.html'" style="background-color: blue; color: white; border-radius: 10px;">lihat data penjual</button>
-</div>
-
   <script type="module">
-    import { ambilPembeli, ubahPembeli } from './main.js';
+    import { ambilAbsensi, ubahAbsensi } from './main.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
-    let elemenNamaPembeli = document.getElementById('input-nama');
+    let elemenTanggal = document.getElementById('input-tanggal');
+    let elemenNis = document.getElementById('input-nis');
+    let elemenNama = document.getElementById('input-nama');
     let elemenAlamat = document.getElementById('input-alamat');
     let elemenNoTlpn = document.getElementById('input-noTlpn');
+    let elemenKelas = document.getElementById('input-kelas');
+    let elemenKeterangan = document.getElementById('input-keterangan');
+
     const queryString = window.location.search
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
-    const pembeli = await ambilPembeli(docId);
+    const absensi = await ambilAbsensi(docId);
 
-    elemenNamaPembeli.value = pembeli.nama;
-    elemenAlamat.value = pembeli.alamat;
-    elemenNoTlpn.value = pembeli.noTlpn;
+    elemenTanggal.value = absensi.tanggal;
+    elemenNis.value = absensi.nis;
+    elemenNama.value = absensi.nama;
+    elemenAlamat.value = absensi.alamat;
+    elemenNoTlpn.value = absensi.noTlpn;
+    elemenKelas.value = absensi.kelas;
+    elemenKeterangan.value = absensi.keterangan;
 
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahPembeli(docId, elemenNamaPembeli.value, elemenAlamat.value, elemenNoTlpn.value);
+      await ubahAbsensi(docId, elemenTanggal.value, elemenNis.value, elemenNama.value, elemenAlamat.value, elemenNoTlpn.value, elemenKelas.value, elemenKeterangan.value);
       window.location.href = 'index.html';
     });
   </script>
+
+  <footer class="site-footer section-padding">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="d-flex justify-content-center" class="col-12">
+          <h4 class="text-white mb-4 me-5"></h4>
+        </div>
+
+        <div class="d-flex justify-content-center" class="col-12">
+          <h6 class="text-white mb-4 me-5">location</h6>
+        </div>
+
+        <div class="d-flex justify-content-center" class="col-12">
+          <p class="text-white mb-4 me-5">121 Teyvat, Gi</p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <p class="mb-4 me6">
+            <br>
+             <a rel="nofollow" href="https://www.tooplate.com/" target="_blank"></a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+  </footer>
+   <footer class="py-3 bg-dark-subtle mt-auto">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Beranda</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">&copy; </p>
+  </footer>
+
+
 </body>
 
 </html>
